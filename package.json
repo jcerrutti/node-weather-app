@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jcerrutti/node-weather-app/issues"
   },
-  "homepage": "https://github.com/jcerrutti/node-weather-app#readme"
+  "homepage": "https://github.com/jcerrutti/node-weather-app#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
 }
