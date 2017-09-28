@@ -1,0 +1,19 @@
+{
+  "name": "nodeweatherapp",
+  "version": "1.0.0",
+  "description": "Demostration Weather app with Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcerrutti/node-weather-app.git"
+  },
+  "author": "Juan Cerrutti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcerrutti/node-weather-app/issues"
+  },
+  "homepage": "https://github.com/jcerrutti/node-weather-app#readme"
+}
