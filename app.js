@@ -1,10 +1,40 @@
+const yargs = require('yargs');
+const geocode = require('./geocode/geocode.js')
 const request = require('request');
-var API_KEY = 'AIzaSyAiFV7Fl-yTWvgAhH6a_HATuE7CbYSN-y0'
+
+const argv = yargs
+    .options({
+        a: {
+            demand: true,
+            alias: 'address',
+            describe: 'Address to fetch weather for',
+            string: true
+        }
+    })
+    .help()
+    .alias('help', 'h')
+    .argv;
+
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+    if (errorMessage) {
+        console.log(errorMessage);
+    } else {
+        console.log(JSON.stringify(results, undefined, 2));
+    }
+});
+
+
+//495234615dffecf93cd6485850b07874
+
+//https://api.darksky.net/forecast/495234615dffecf93cd6485850b07874/-31.34569419999999,-64.3365754
+
 request({
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1301%20lombard%20street%20philadelphia&key='+API_KEY,
+    url: 'https://api.darksky.net/forecast/495234615dffecf93cd6485850b07874/-31.34569419999999,-64.3365754?units=si',
     json: true
 }, (error, response, body) => {
-    console.log(`Address: ${body.results[0].formatted_address}`);
-    console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
-    console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
+    if (!error && response.statusCode === 200) {
+        console.log(body.currently.temperature);
+    } else {
+        console.log('Unable to fetch weather');
+    }
 })
