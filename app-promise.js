@@ -27,7 +27,9 @@ var location = () => {
             const ipAddress = `${address.region_name}, ${address.country_name}`;
             const encodeLocation = `https://maps.googleapis.com/maps/api/geocode/json?address=$${ipAddress}&key=${GEOCODE_API_KEY}`;
             return axios.get(encodeLocation);
-        })
+        }).catch((error) => {
+            throw new Error('Unable to detect IP Address');
+        });
     }
 }
 
@@ -45,7 +47,6 @@ location().then((response) => {
     if (error.code === 'ENOTFOUND') {
         console.log('Unable to connect to API servers')
     } else {
-        console.log('error');
         console.log(error.message);
     }
 });
