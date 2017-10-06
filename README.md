@@ -5,6 +5,6 @@ Testing node with a weather app
 ~~~ bash
 node app.js
 # Returns weather for current location
-node app.js -a 'Buenos Aires'
+node app-promise.js -a 'Buenos Aires'
 # Returns weather for Buenos Aires
 ~~~
